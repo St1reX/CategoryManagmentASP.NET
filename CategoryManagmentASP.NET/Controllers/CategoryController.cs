@@ -38,6 +38,7 @@ namespace CategoryManagmentASP.NET.Controllers
             if(ModelState.IsValid)
             {
                 _db.Categories.Add(obj);
+                TempData["success"] = "Category added successfully";
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -75,6 +76,7 @@ namespace CategoryManagmentASP.NET.Controllers
             if (ModelState.IsValid)
             {
                 _db.Categories.Update(obj);
+                TempData["success"] = "Category updated successfully";
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -107,6 +109,7 @@ namespace CategoryManagmentASP.NET.Controllers
         {
             var categoryToDelete = _db.Categories.Find(id);
             _db.Categories.Remove(categoryToDelete);
+            TempData["success"] = "Category deleted successfully";
             _db.SaveChanges();
 
             return RedirectToAction("Index");
