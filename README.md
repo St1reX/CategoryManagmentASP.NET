@@ -38,8 +38,8 @@ A simple CRUD project for managing categories using **ASP.NET Core** and **Razor
 
 ```
 /repo
-│-- Pages/
-│   ├── Categories/
+│-- Views/
+│   ├── Category/
 │   │   ├── Index.cshtml
 │   │   ├── Create.cshtml
 │   │   ├── Edit.cshtml
@@ -57,8 +57,15 @@ A simple CRUD project for managing categories using **ASP.NET Core** and **Razor
 ```csharp
 public class Category
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
+   [Key]
+   public int Id { get; set; }
+   [Required]
+   public string Name { get; set; }
+   [DisplayName ("Display Order")]
+   [Range (1, 100, ErrorMessage = "Display order must be number between 1 and 100.")]
+   public int DisplayOrder { get; set; }
+   public DateTime CreatedDateTime { get; set; } = DateTime.Now;
+      
 }
 ```
 
